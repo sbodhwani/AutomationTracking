@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Automation Runs Tracking</title>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #0779e4 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #555;
+            color: #fff;
+        }
+        nav a {
+            color: #fff;
+            padding: 15px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background: #0779e4;
+            color: #fff;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tab {
+            background: #ccc;
+            color: #333;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tab.active {
+            background: #0779e4;
+            color: #fff;
+        }
+        .content {
+            display: none;
+        }
+        .content.active {
+            display: block;
+        }
+        .filter-box {
+            background: #e4e4e4;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .filter-box select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background: #f4f4f4;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        tr:hover {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+<header>
+<h1>Automation Runs Tracking</h1>
+</header>
+<nav>
+<div class="tabs">
+<div class="tab active" onclick="showContent('playwright')">Playwright</div>
+<div class="tab" onclick="showContent('selenium')">Selenium</div>
+<div class="tab" onclick="showContent('sikuli')">Sikuli</div>
+</div>
+</nav>
+<div class="container">
+<div class="content active" id="playwright">
+<h2>Playwright Runs</h2>
+<div class="filter-box">
+<label for="filter-month">Filter by Month:</label>
+<select id="filter-month" onchange="filterTable('playwright-table', 0, this.value)">
+<option value="">All</option>
+</select>
+<label for="filter-release">Filter by Release:</label>
+<select id="filter-release" onchange="filterTable('playwright-table', 2, this.value)">
+<option value="">All</option>
+</select>
+</div>
+<table id="playwright-table">
+<thead>
+<tr><th>Month</th><th>Date</th><th>Release</th><th>WC - Build Number</th><th>OS Platform</th><th>Test Case Count</th><th>Pass Rate</th><th>Runtime</th><th>Time for FA</th><th>Server URL</th><th>Result Link</th></tr>
+</thead>
+<tbody>
+<tr><td>September</td><td>9/25/2024</td><td>Raven</td><td>NA</td><td>Azure Windows 11</td><td>229</td><td>55.89%</td><td>2h 30m</td><td>30m</td><td><a href="http://creo-server.rd-plm-devops.bdns.ptc.com/Windchill/">Server</a></td><td><a href="http://vizauto-jenkins.rd-plm-devops.bdns.ptc.com:8080/view/Playwright%20Runs/job/VCS_Playwright_Results/8/allure/">Results</a></td></tr>
+<tr><td>October</td><td>10/24/2024</td><td>Raven</td><td>235</td><td>Azure Windows 11</td><td>286</td><td>88.81%</td><td>3h 15m</td><td>45m</td><td><a href="http://wvs-server.rd-plm-devops.bdns.ptc.com/Windchill/">Server</a></td><td><a href="http://vizauto-jenkins.rd-plm-devops.bdns.ptc.com:8080/view/Playwright%20Runs/job/VCS_Playwright_Results/10/allure/">Results</a></td></tr>
+<tr><td>November</td><td>11/7/2024</td><td>Raven</td><td>258</td><td>Azure Windows 11</td><td>286</td><td>88.81%</td><td>3h 10m</td><td>40m</td><td><a href="http://wvs-server.rd-plm-devops.bdns.ptc.com/Windchill/">Server</a></td><td><a href="http://vizauto-jenkins.rd-plm-devops.bdns.ptc.com:8080/view/Playwright%20Runs/job/VCS_Playwright_Results/12/allure/">Results</a></td></tr>
+<tr><td>November</td><td>11/22/2024</td><td>Raven</td><td>280</td><td>Azure Windows 11</td><td>289</td><td>94.46%</td><td>3h 20m</td><td>50m</td><td><a href="http://wvs-server.rd-plm-devops.bdns.ptc.com/Windchill/">Server</a></td><td><a href="http://vizauto-jenkins.rd-plm-devops.bdns.ptc.com:8080/view/Playwright%20Runs/job/VCS_Playwright_Results/14/allure/">Results</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="content" id="selenium">
+<h2>Selenium Runs</h2>
+<div class="filter-box">
+<label for="filter-month-selenium">Filter by Month:</label>
+<select id="filter-month-selenium" onchange="filterTable('selenium-table', 0, this.value)">
+<option value="">All</option>
+</select>
+<label for="filter-release-selenium">Filter by Release:</label>
+<select id="filter-release-selenium" onchange="filterTable('selenium-table', 1, this.value)">
+<option value="">All</option>
+</select>
+</div>
+<table id="selenium-table">
+<thead>
+<tr><th>Month</th><th>Date</th><th>Release</th><th>WC - Build Number</th><th>OS Platform</th><th>Test Case Count</th><th>Pass Rate</th><th>Runtime</th><th>Time for FA</th><th>Server URL</th><th>Result Link</th></tr>
+</thead>
+<tbody>
+<!-- Empty rows for Selenium data -->
+</tbody>
+</table>
+</div>
+<div class="content" id="sikuli">
+<h2>Sikuli Runs</h2>
+<div class="filter-box">
+<label for="filter-month-sikuli">Filter by Month:</label>
+<select id="filter-month-sikuli" onchange="filterTable('sikuli-table', 0, this.value)">
+<option value="">All</option>
+</select>
+<label for="filter-release-sikuli">Filter by Release:</label>
+<select id="filter-release-sikuli" onchange="filterTable('sikuli-table', 1, this.value)">
+<option value="">All</option>
+</select>
+</div>
+<table id="sikuli-table">
+<thead>
+<tr><th>Month</th><th>Date</th><th>Release</th><th>WC - Build Number</th><th>OS Platform</th><th>Test Case Count</th><th>Pass Rate</th><th>Runtime</th><th>Time for FA</th><th>Server URL</th><th>Result Link</th></tr>
+</thead>
+<tbody>
+<!-- Empty rows for Sikuli data -->
+</tbody>
+</table>
+</div>
+</div>
+<script>
+        function showContent(id) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            document.querySelector(`.tab[onclick="showContent('${id}')"]`).classList.add('active');
+        }
+
+        function filterTable(tableId, colIndex, filterValue) {
+            const table = document.getElementById(tableId);
+            const rows = table.getElementsByTagName('tr');
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                if (cells[colIndex].innerText.includes(filterValue) || filterValue === "") {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const monthFilter = document.getElementById('filter-month');
+            const releaseFilter = document.getElementById('filter-release');
+            const seleniumMonthFilter = document.getElementById('filter-month-selenium');
+            const seleniumReleaseFilter = document.getElementById('filter-release-selenium');
+            const sikuliMonthFilter = document.getElementById('filter-month-sikuli');
+            const sikuliReleaseFilter = document.getElementById('filter-release-sikuli');
+
+            const months = ["September", "October", "November"];
+            const releases = ["Raven Runs", "Raven Build 235", "Raven Build 258", "Raven Build 280"];
+
+            months.forEach(month => {
+                const option = document.createElement('option');
+                option.value = month;
+                option.innerText = month;
+                monthFilter.appendChild(option);
+                seleniumMonthFilter.appendChild(option.cloneNode(true));
+                sikuliMonthFilter.appendChild(option.cloneNode(true));
+            });
+
+            releases.forEach(release => {
+                const option = document.createElement('option');
+                option.value = release;
+                option.innerText = release;
+                releaseFilter.appendChild(option);
+                seleniumReleaseFilter.appendChild(option.cloneNode(true));
+                sikuliReleaseFilter.appendChild(option.cloneNode(true));
+            });
+        });
+    </script>
+</body>
+</html>
